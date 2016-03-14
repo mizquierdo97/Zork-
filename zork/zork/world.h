@@ -1,18 +1,21 @@
 #include <stdio.h>
-#include <iostream>
+
 
 #ifndef _CLASSES
 #define _CLASSES
+class Player;
+class Room;
+class Exit;
+class World;
 
 class Player{
 public:
-	char* name;
-	Player(){
-		name = new char[20];
-	}
-	~Player(){
-		delete[] name;
-	}
+	char name[30];
+	char description[200];
+	//Player();
+	//~Player();
+	Room* position;
+	
 	
 	
 };
@@ -27,30 +30,32 @@ class Exit{
 public:
 	char name[30];
 	char description[200];
-	Exit();
-	~Exit();
-	Room* origen;
-	Room* desti;
+	
+	Room* origin;
+	Room* destination;
 	bool open = false;
 };
 
 
 class World{
 public:
-	int x = 0;
-	Room* rooms= nullptr;
-	//Exit* exits = nullptr;
-	World() {
-		rooms = new Room[13];
-		//exits = new Exit[20];
+	
+	Room* rooms;
+	Exit* exits;
+	Player* player;
+	World();		
+	~World(){
+		delete[] rooms;
+		delete[] exits;
+		delete[] player;
 	}
-	~World();
+	
+
 	void createworld();
 	
-	/*Room* room = nullptr;
-	Player* player = nullptr;
-	Exit* exit = nullptr;*/
+
 };
+
 
 
 #endif  // Classes
