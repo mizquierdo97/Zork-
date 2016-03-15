@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include "player.h"
+#include "exit.h"
+#include "room.h"
 
 enum direction{
 	north,
@@ -7,41 +10,14 @@ enum direction{
 	west,
 };
 
-#ifndef _CLASSES
-#define _CLASSES
+
+class World;
 class Player;
 class Room;
 class Exit;
-class World;
 
-class Player{
-public:
-	char name[30];
-	char description[200];
-	//Player();
-	//~Player();
-	Room* position;
-	
-	
-	
-};
 
-class Room{
-public:
-	char name[30];
-	char description[200];
-};
 
-class Exit{
-public:
-	char name[30];
-	char description[200];
-	
-	Room* origin;
-	Room* destination;
-	bool open = false;
-	int direction;  //0=North,1=South,2=East,3=West
-};
 
 
 class World{
@@ -56,17 +32,20 @@ public:
 		delete[] exits;
 		delete[] player;
 	}
+	void createworld();
+	bool loop();
+	bool open(char * inst, int dir);
+	
 	
 
-	void createworld();
-	void loop();
+	bool Go(char* inst, int dir);
 	
 
 };
 
 
 
-#endif  // Classes
+
 
 
 
