@@ -66,6 +66,7 @@
   <ItemGroup>
     <ClCompile Include="createworld.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="loop.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="world.h" />

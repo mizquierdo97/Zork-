@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+enum direction{
+	north,
+	south,
+	east,
+	west,
+};
 
 #ifndef _CLASSES
 #define _CLASSES
@@ -34,6 +40,7 @@ public:
 	Room* origin;
 	Room* destination;
 	bool open = false;
+	int direction;  //0=North,1=South,2=East,3=West
 };
 
 
@@ -52,6 +59,7 @@ public:
 	
 
 	void createworld();
+	void loop();
 	
 
 };
