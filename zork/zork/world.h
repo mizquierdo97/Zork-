@@ -34,7 +34,8 @@ public:
 	}
 	void createworld();
 	bool loop();
-	bool open(char * inst, int dir);
+	void open(char * inst, int dir);
+	void close(char * inst, int dir);
 	
 	
 

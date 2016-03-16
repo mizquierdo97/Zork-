@@ -59,20 +59,20 @@ void World::createworld(){
 	exits[1].origin = rooms + 1; exits[1].destination = rooms + 0; exits[1].open = false; exits[1].direction = north;
 	exits[2].origin = rooms + 1; exits[2].destination = rooms + 2; exits[2].open = false; exits[2].direction = south;
 	exits[3].origin = rooms + 2; exits[3].destination = rooms + 1; exits[3].open = false; exits[3].direction = north;
-	exits[4].origin = rooms + 1; exits[4].destination = rooms + 3; exits[4].open = true; exits[4].direction = east;
-	exits[5].origin = rooms + 3; exits[5].destination = rooms + 1; exits[5].open = true; exits[5].direction = west;
-	exits[6].origin = rooms + 1; exits[6].destination = rooms + 4; exits[6].open = true; exits[6].direction = west;
-	exits[7].origin = rooms + 4; exits[7].destination = rooms + 1; exits[7].open = true; exits[7].direction = east;
+	exits[4].origin = rooms + 1; exits[4].destination = rooms + 3; exits[4].open = false; exits[4].direction = east;
+	exits[5].origin = rooms + 3; exits[5].destination = rooms + 1; exits[5].open = false; exits[5].direction = west;
+	exits[6].origin = rooms + 4; exits[6].destination = rooms + 1; exits[6].open = false; exits[6].direction = east;
+	exits[7].origin = rooms + 1; exits[7].destination = rooms + 4; exits[7].open = false; exits[7].direction = west;	
 	exits[8].origin = rooms + 3; exits[8].destination = rooms + 5; exits[8].open = true; exits[8].direction = south;
 	exits[9].origin = rooms + 5; exits[9].destination = rooms + 3; exits[9].open = true; exits[9].direction = north;
 	exits[10].origin = rooms + 3; exits[10].destination = rooms + 6; exits[10].open = true; exits[10].direction = east;
 	exits[11].origin = rooms + 6; exits[11].destination = rooms + 3; exits[11].open = true; exits[11].direction = west;
-	exits[12].origin = rooms + 4; exits[12].destination = rooms + 7; exits[12].open = true; exits[12].direction = north;
-	exits[13].origin = rooms + 7; exits[13].destination = rooms + 4; exits[13].open = true; exits[13].direction = south;
+	exits[13].origin = rooms + 7; exits[12].destination = rooms + 4; exits[12].open = true; exits[13].direction = south;
+	exits[12].origin = rooms + 4; exits[13].destination = rooms + 7; exits[13].open = true; exits[12].direction = north;	
 	exits[14].origin = rooms + 4; exits[14].destination = rooms + 8; exits[14].open = true; exits[14].direction = south;
 	exits[15].origin = rooms + 8; exits[15].destination = rooms + 4; exits[15].open = true; exits[15].direction = north;
-	exits[16].origin = rooms + 4; exits[16].destination = rooms + 9; exits[16].open = true; exits[16].direction = west;
-	exits[17].origin = rooms + 9; exits[17].destination = rooms + 4; exits[17].open = true; exits[17].direction = east;
+	exits[17].origin = rooms + 9; exits[16].destination = rooms + 4; exits[16].open = true; exits[17].direction = east;
+	exits[16].origin = rooms + 4; exits[17].destination = rooms + 9; exits[17].open = true; exits[16].direction = west;	
 	exits[18].origin = rooms + 5; exits[18].destination = rooms + 6; exits[18].open = true;
 	exits[19].origin = rooms + 6; exits[19].destination = rooms + 5; exits[19].open = true;
 	exits[20].origin = rooms + 7; exits[20].destination = rooms + 9; exits[20].open = true;
@@ -185,6 +185,23 @@ bool World::loop(){
 			open(pch2, dir);
 
 		}
+
+		if (strcmp(pch1, "close") == 0 || strcmp(pch1, "c") == 0) {
+			if (strcmp(pch2, "south") == 0 || strcmp(pch2, "s") == 0) {
+				dir = 0;
+			}
+			else if (strcmp(pch2, "north") == 0 || strcmp(pch2, "n") == 0) {
+				dir = 1;
+			}
+			else if (strcmp(pch2, "east") == 0 || strcmp(pch2, "e") == 0) {
+				dir = 2;
+			}
+			else if (strcmp(pch2, "west") == 0 || strcmp(pch2, "w") == 0) {
+				dir = 3;
+			}
+			close(pch2, dir);
+
+		}
 		break;
 
 	}
@@ -267,20 +284,111 @@ bool World::Go(char* inst, int dir){
 	}
 
 }
-bool World::open(char* inst, int dir) {
+void World::open(char* inst, int dir) {
 	if (dir == 0) {
 		for (int i = 0; i < 24; i++) {
 			if (exits[i].origin == player[0].position && exits[i].direction == south) {
 				if (exits[i].open == false) {
 					exits[i].open = true;
+					exits[i+1].open = true;
 					printf("The door is now open\n");
 				}
-				else printf("The door is open");
+				else printf("The door is open\n");
 			}
 		}
 	}
-	return false;
+	else if (dir == 1) {
+		for (int i = 0; i < 24; i++) {
+			if (exits[i].origin == player[0].position && exits[i].direction == north) {
+				if (exits[i].open == false) {
+					exits[i].open = true;
+					exits[i - 1].open = true;
+					printf("The door is now open\n");
+				}
+				else printf("The door is open\n");
+			}
+		}
+	}
+	else if (dir == 2) {
+		for (int i = 0; i < 24; i++) {
+			if (exits[i].origin == player[0].position && exits[i].direction == east) {
+				if (exits[i].open == false) {
+					exits[i].open = true;
+					exits[i + 1].open = true;
+					printf("The door is now open\n");
+				}
+				else printf("The door is open\n");
+			}
+		}
+	}
+	if (dir == 3) {
+		for (int i = 0; i < 24; i++) {
+			if (exits[i].origin == player[0].position && exits[i].direction == west) {
+				if (exits[i].open == false) {
+					exits[i].open = true;
+					exits[i - 1].open = true;
+					printf("The door is now open\n");
+				}
+				else printf("The door is open\n");
+			}
+		}
+	}
+	
 }
+
+void World::close(char* inst, int dir) {
+	if (dir == 0) {
+		for (int i = 0; i < 24; i++) {
+			if (exits[i].origin == player[0].position && exits[i].direction == south) {
+				if (exits[i].open == true) {
+					exits[i].open = false;
+					exits[i + 1].open = false;
+					printf("The door is now closed\n");
+				}
+				else printf("The door is closed\n");
+			}
+		}
+	}
+	else if (dir == 1) {
+		for (int i = 0; i < 24; i++) {
+			if (exits[i].origin == player[0].position && exits[i].direction == north) {
+				if (exits[i].open == true) {
+					exits[i].open = false;
+					exits[i - 1].open = false;
+					printf("The door is now closed\n");
+				}
+				else printf("The door is closed\n");
+			}
+		}
+	}
+	else if (dir == 2) {
+		for (int i = 0; i < 24; i++) {
+			if (exits[i].origin == player[0].position && exits[i].direction == east) {
+				if (exits[i].open == true) {
+					exits[i].open = false;
+					exits[i + 1].open = false;
+					printf("The door is now closed\n");
+				}
+				else printf("The door is closed\n");
+			}
+		}
+	}
+	if (dir == 3) {
+		for (int i = 0; i < 24; i++) {
+			if (exits[i].origin == player[0].position && exits[i].direction == west) {
+				if (exits[i].open == true) {
+					exits[i].open = false;
+					exits[i - 1].open = false;
+					printf("The door is now closed\n");
+				}
+				else printf("The door is closed\n");
+			}
+		}
+	}
+	
+}
+
+
 
 	
 
