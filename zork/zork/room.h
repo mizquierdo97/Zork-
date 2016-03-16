@@ -1,10 +1,6 @@
 #include <stdio.h>
 
 
-class World;
-class Player;
-class Room;
-class Exit;
 
 
 

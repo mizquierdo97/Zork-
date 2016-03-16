@@ -1,9 +1,8 @@
 #include <stdio.h>
 
-class Player;
+
 class Room;
-class Exit;
-class World;
+
 
 class Exit{
 public:

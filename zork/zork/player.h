@@ -2,19 +2,16 @@
 
 
 
-class Room;
-class Exit;
-class World;
 
+class Room;
 
 
 class Player {
 public:
 	char name[30];
 	char description[200];
-	//Player();
-	//~Player();
 	Room* position;
+	
 
 };
 
