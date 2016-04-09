@@ -23,7 +23,7 @@ class Exit;
 
 class World{
 public:
-	
+	//World* w;
 	Room* rooms;
 	Exit* exits;
 	Player* player;
@@ -42,7 +42,7 @@ public:
 	
 
 };
-
+extern World* w;
 
 
 

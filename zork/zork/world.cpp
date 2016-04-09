@@ -1,4 +1,5 @@
 #include "world.h"
+
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
@@ -94,52 +95,57 @@ bool World::loop(){
 	int n = 0;
 	for (int i = 0; command[i]; i++)
 		command[i] = tolower(command[i]);
+	//char* pch[3][30];
+	
 	char* pch;
-	char* pch1;
+	char* pch1[4];
 	char* pch2 = 0;
 	pch = strtok(command, " ,.-");
-	pch1 = pch;
-;
+	pch1[0] = pch;
+	int num = 1;
 	while (pch != NULL)
 	{
-		pch2 = pch;
+		
 		pch = strtok(NULL, " ,.-");
+		pch1[num] = pch;
 		n++;
+		num++;
 	}
+
 
 //Cases for number of arguments
 	switch (n){
 	case 1:   // 1 argument
 
 		// Go 
-		if (strcmp(pch1, "north") == 0 || strcmp(pch1, "n") == 0){
+		if (strcmp(pch1[0], "north") == 0 || strcmp(pch1[0], "n") == 0){
 			dir = 0;
-			Go(pch1, dir);
+			Go(pch1[0], dir);
 		}
-		else if (strcmp(pch1, "south") == 0 || strcmp(pch1, "s") == 0){
+		else if (strcmp(pch1[0], "south") == 0 || strcmp(pch1[0], "s") == 0){
 			dir = 1;
-			Go(pch1, dir);
+			Go(pch1[0], dir);
 		}
-		else if (strcmp(pch1, "east") == 0 || strcmp(pch1, "e") == 0){
+		else if (strcmp(pch1[0], "east") == 0 || strcmp(pch1[0], "e") == 0){
 			dir = 2;
-			Go(pch1, dir);
+			Go(pch1[0], dir);
 		}
-		else if (strcmp(pch1, "west") == 0 || strcmp(pch1, "w") == 0){
+		else if (strcmp(pch1[0], "west") == 0 || strcmp(pch1[0], "w") == 0){
 			dir = 3;
-			Go(pch1, dir);
+			Go(pch1[0], dir);
 		}
 
 		//Quit
-		else if(strcmp(pch1, "quit") == 0 || strcmp(pch1, "q") == 0){
+		else if (strcmp(pch1[0], "quit") == 0 || strcmp(pch1[0], "q") == 0){
 			return true;
 		}
 		//Help
 
-		else if(strcmp(pch1, "help") == 0 || strcmp(pch1, "h") == 0) {
+		else if (strcmp(pch1[0], "help") == 0 || strcmp(pch1[0], "h") == 0) {
 			printf("You can move with the commands north/south/east/west or n/s/e/w. Also you can use commands look/open/close/quit/go.\n");
 		}
 		//Look
-		else if (strcmp(pch1, "look") == 0 || strcmp(pch1, "l") == 0) {
+		else if (strcmp(pch1[0], "look") == 0 || strcmp(pch1[0], "l") == 0) {
 			printf("You are in %s. %s\n", player[0].position->name, player[0].position->description);
 		}
 		else printf("Invalid command\n");
@@ -149,72 +155,72 @@ bool World::loop(){
 
 	case 2:   // 2 arguments
 		//Go --
-		if (strcmp(pch1, "go") == 0 || strcmp(pch1, "g") == 0){
-			if (strcmp(pch2, "north") == 0 || strcmp(pch2, "n") == 0){
+		if (strcmp(pch1[0], "go") == 0 || strcmp(pch1[0], "g") == 0){
+			if (strcmp(pch1[1], "north") == 0 || strcmp(pch1[1], "n") == 0){
 				dir = 0;
 			}
-			else if (strcmp(pch2, "south") == 0 || strcmp(pch2, "s") == 0){
+			else if (strcmp(pch1[1], "south") == 0 || strcmp(pch1[1], "s") == 0){
 				dir = 1;
 			}
-			else if (strcmp(pch2, "east") == 0 || strcmp(pch2, "e") == 0){
+			else if (strcmp(pch1[1], "east") == 0 || strcmp(pch1[1], "e") == 0){
 				dir = 2;
 			}
-			else if (strcmp(pch2, "west") == 0 || strcmp(pch2, "w") == 0){
+			else if (strcmp(pch1[1], "west") == 0 || strcmp(pch1[1], "w") == 0){
 				dir = 3;
 			}
-			Go(pch2, dir);
+			Go(pch1[1], dir);
 		}
 		//Open --
-		else if (strcmp(pch1, "open") == 0 || strcmp(pch1, "o")==0) {
-			if (strcmp(pch2, "north") == 0 || strcmp(pch2, "n") == 0) {
+		else if (strcmp(pch1[0], "open") == 0 || strcmp(pch1[0], "o")==0) {
+			if (strcmp(pch1[1], "north") == 0 || strcmp(pch1[1], "n") == 0) {
 				dir = 0;
 			}
-			else if (strcmp(pch2, "south") == 0 || strcmp(pch2, "s") == 0) {
+			else if (strcmp(pch1[1], "south") == 0 || strcmp(pch1[1], "s") == 0) {
 				dir = 1;
 			}
-			else if (strcmp(pch2, "east") == 0 || strcmp(pch2, "e") == 0) {
+			else if (strcmp(pch1[1], "east") == 0 || strcmp(pch1[1], "e") == 0) {
 				dir = 2;
 			}
-			else if (strcmp(pch2, "west") == 0 || strcmp(pch2, "w") == 0) {
+			else if (strcmp(pch1[1], "west") == 0 || strcmp(pch1[1], "w") == 0) {
 				dir = 3;
 			}
-			open(pch2, dir);
+			open(pch1[1], dir);
 
 		}
 		//Close --
-		else if (strcmp(pch1, "close") == 0 || strcmp(pch1, "c") == 0) {
-			if (strcmp(pch2, "north") == 0 || strcmp(pch2, "n") == 0) {
+		else if (strcmp(pch1[0], "close") == 0 || strcmp(pch1[0], "c") == 0) {
+			if (strcmp(pch1[1], "north") == 0 || strcmp(pch1[1], "n") == 0) {
 				dir = 0;
 			}
-			else if (strcmp(pch2, "south") == 0 || strcmp(pch2, "s") == 0) {
+			else if (strcmp(pch1[1], "south") == 0 || strcmp(pch1[1], "s") == 0) {
 				dir = 1;
 			}
-			else if (strcmp(pch2, "east") == 0 || strcmp(pch2, "e") == 0) {
+			else if (strcmp(pch1[1], "east") == 0 || strcmp(pch1[1], "e") == 0) {
 				dir = 2;
 			}
-			else if (strcmp(pch2, "west") == 0 || strcmp(pch2, "w") == 0) {
+			else if (strcmp(pch1[1], "west") == 0 || strcmp(pch1[1], "w") == 0) {
 				dir = 3;
 			}
-			close(pch2, dir);
+			close(pch1[1], dir);
 
 		}
-		else if (strcmp(pch1, "look") == 0 || strcmp(pch1, "l") == 0) {
-			if (strcmp(pch2, "north") == 0 || strcmp(pch2, "n") == 0) {
+		else if (strcmp(pch1[0], "look") == 0 || strcmp(pch1[0], "l") == 0) {
+			if (strcmp(pch1[1], "north") == 0 || strcmp(pch1[1], "n") == 0) {
 				dir = 0;
 			}
-			else if (strcmp(pch2, "south") == 0 || strcmp(pch2, "s") == 0) {
+			else if (strcmp(pch1[1], "south") == 0 || strcmp(pch1[1], "s") == 0) {
 				dir = 1;
 			}
-			else if (strcmp(pch2, "east") == 0 || strcmp(pch2, "e") == 0) {
+			else if (strcmp(pch1[1], "east") == 0 || strcmp(pch1[1], "e") == 0) {
 				dir = 2;
 			}
-			else if (strcmp(pch2, "west") == 0 || strcmp(pch2, "w") == 0) {
+			else if (strcmp(pch1[1], "west") == 0 || strcmp(pch1[1], "w") == 0) {
 				dir = 3;
 			}
-			else if (strcmp(pch2, "me") == 0 || strcmp(pch2, "m") == 0 || strcmp(pch2, "yourself") == 0 || strcmp(pch2, "y") == 0){
+			else if (strcmp(pch1[1], "me") == 0 || strcmp(pch1[1], "m") == 0 || strcmp(pch1[1], "yourself") == 0 || strcmp(pch1[1], "y") == 0){
 				dir = 4;
 			}
-			look(pch2, dir);
+			look(pch1[1], dir);
 		}
 		break;
 
@@ -223,11 +229,13 @@ bool World::loop(){
 }
 
 //Go function
+
 bool World::Go(char* inst, int dir){
 	int door = NULL;
+	
 	for (int n = 0; n < 4; n++){
 		if (dir == n){
-			for (int i = 0; i < 24; i++){
+			for (int i = 0; i < NUM_EXITS; i++){
 				if (exits[i].origin == player[0].position && exits[i].direction == n){
 					if (exits[i].open == false) {
 						printf("The door is closed\n");
