@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zork", "zork\zork.vcxproj", "{43D0F5CE-D00A-4A7F-8790-3812E90FC94E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project2", "Project2\Project2.vcxproj", "{0E35A48F-B153-4C41-B34A-E73B0AF1655E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{43D0F5CE-D00A-4A7F-8790-3812E90FC94E}.Debug|Win32.ActiveCfg = Debug|Win32
-		{43D0F5CE-D00A-4A7F-8790-3812E90FC94E}.Debug|Win32.Build.0 = Debug|Win32
-		{43D0F5CE-D00A-4A7F-8790-3812E90FC94E}.Release|Win32.ActiveCfg = Release|Win32
-		{43D0F5CE-D00A-4A7F-8790-3812E90FC94E}.Release|Win32.Build.0 = Release|Win32
+		{0E35A48F-B153-4C41-B34A-E73B0AF1655E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0E35A48F-B153-4C41-B34A-E73B0AF1655E}.Debug|Win32.Build.0 = Debug|Win32
+		{0E35A48F-B153-4C41-B34A-E73B0AF1655E}.Release|Win32.ActiveCfg = Release|Win32
+		{0E35A48F-B153-4C41-B34A-E73B0AF1655E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
