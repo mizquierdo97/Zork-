@@ -1,3 +1,9 @@
+#ifndef _VECTOR
+#define _VECTOR
+
+#include <assert.h>
+
+
 typedef unsigned int uint;
 
 template <class TYPE>
@@ -5,10 +11,10 @@ class Vector{
 private:
 	TYPE* buffer;
 	uint capacity = 5;
-	uint num_elements = 0;
+	
 
 public:
-
+	uint num_elements = 0;
 	Vector(){
 
 		buffer = new TYPE[capacity];
@@ -64,5 +70,16 @@ public:
 		}
 		buffer[0] = element;
 	}
-	
+	TYPE operator[](uint index)const{
+		assert(index < num_elements);
+		return buffer[index];
+	}
+
+	TYPE& operator[](uint index){
+		assert(index < num_elements);
+		return buffer[index];
+	}
+
 };
+
+#endif

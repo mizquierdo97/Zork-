@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 #include "world.h"
-
+#include "room.h"
+#include "player.h"
 
 
 void World::createworld(){
@@ -16,8 +17,5 @@ void World::createworld(){
 	rooms.push_back(new Room("Courtyard", "The only instance where the prisoners can see the sunlight"));
 	rooms.push_back(new Room("Dinner Room", "Totally empty apart from by a prisoner and a guard.There are some cutlery on the tables"));
 
-	
-
-	getchar();
-	
+	player =new Player("asd", "qwrwq", rooms[0]);
 }

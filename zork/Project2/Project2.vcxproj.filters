@@ -39,6 +39,9 @@
     <ClCompile Include="exit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="loop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h">

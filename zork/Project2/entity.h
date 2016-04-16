@@ -1,3 +1,5 @@
+#ifndef _ENTITY
+#define _ENTITY
 #include "vector.h"
 #include "string.h"
 #include <stdio.h>
@@ -7,6 +9,7 @@
 class Room;
 class Player;
 //class Vector <class TYPE>;
+
 enum type{ 
 	ENTITY,
 	PLAYER,
@@ -27,3 +30,4 @@ public:
 	char* get_name()const;
 	char* get_description()const;
 };
+#endif

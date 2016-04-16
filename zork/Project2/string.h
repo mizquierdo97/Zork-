@@ -1,4 +1,5 @@
-
+#ifndef _STRING
+#define _STRING
 
 typedef unsigned int uint;
 
@@ -12,7 +13,7 @@ public:
 	String(const String& str);
 	~String();
 	uint length()const;
-	const char* c_str()const;
+	char* c_str()const;
 	bool empty()const;
 	bool operator == (const String& str) const;
 	bool operator == (const char* str) const;
@@ -25,3 +26,5 @@ public:
 	char* tokenize(const char character, const String& str);
 
 };
+
+#endif
