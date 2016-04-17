@@ -1,6 +1,8 @@
+
+
 #ifndef _STRING
 #define _STRING
-
+#include "Vector.h"
 typedef unsigned int uint;
 
 class String{
@@ -23,7 +25,8 @@ public:
 	void clean();
 	void shrink_to_fit();
 	uint capacity() const;
-	char* tokenize(const char character, const String& str);
+	//Vector <String*> tokenize(const char character, const String& str);
+	bool operator !=(const String& str)const;
 
 };
 

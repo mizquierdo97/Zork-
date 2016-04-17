@@ -1,5 +1,6 @@
 #include "string.h"
 #include <string>
+#include "Vector.h"
 
 
 String::String(const char* str){
@@ -92,9 +93,27 @@ void String::shrink_to_fit(){
 		buffer = new char[mcapacity];
 
 	}
-	else
+	
+}
+bool String::operator != (const String& str)const{
+	return(strcmp(buffer, str.buffer) != 0);
+}
+/*
+Vector<String*> String::tokenize(const char element, const String& string){
+	char* pch;
+	char* pch1[4];
+	char* pch2 = 0;
+	pch = strtok(string, " ,.-");
+	pch1[0] = pch;
+	int num = 1;
+	while (pch != NULL)
 	{
-		printf("The capacity is already the string length\n");
+
+		pch = strtok(NULL, " ,.-");
+		pch1[num] = pch;
+		n++;
+		num++;
 	}
 }
+*/
 

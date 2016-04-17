@@ -1,7 +1,7 @@
 #ifndef _PLAYER
 #define _PLAYER
 
-//#include "entity.h"
+
 #include "entity.h"
 
 class World;
@@ -14,8 +14,8 @@ public:
 	~Player(){};
 	void go(int, const World*);
 	void look(int, const World*)const;
-	void open();
-	void close();
+	void open(int, const World*);
+	void close(int, const World*);
 	World* world;
 };
 #endif

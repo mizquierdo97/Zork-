@@ -10,6 +10,13 @@ class Exit;
 class Room;
 class Player;
 
+enum direction{
+	north,
+	south,
+	east,
+	west,
+};
+
 class World{
 public:
 	Vector <Room*> rooms;

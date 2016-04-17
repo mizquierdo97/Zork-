@@ -71,12 +71,13 @@ public:
 		buffer[0] = element;
 	}
 	TYPE operator[](uint index)const{
-		assert(index < num_elements);
+		if (index > num_elements)assert(index < num_elements);
+		//assert(index < num_elements);
 		return buffer[index];
 	}
 
 	TYPE& operator[](uint index){
-		assert(index < num_elements);
+		if(index > num_elements)assert(index < num_elements);
 		return buffer[index];
 	}
 

@@ -20,7 +20,7 @@ void Player::go( int dir, const World* world ){
 		if (dir == n){
 			
 			
-			for (int i = 0; i < 20; i++){
+			for (int i = 0; i < world->exits.num_elements; i++){
 				if (world->exits[i]->origin == this->position && world->exits[i]->direction == n){
 					if (world->exits[i]->open == false) {
 						printf("The door is closed\n");
@@ -28,7 +28,7 @@ void Player::go( int dir, const World* world ){
 					}
 					else {
 						door++;
-						this->position = world->exits[i]->destination;
+						this->position = world->exits[i]->get_destination();
 						
 					}
 				}
@@ -60,3 +60,42 @@ void Player::look(int dir,const World* world)const{
 		printf("%s\n", this->description); look++;
 	}
 }
+
+//Open Function
+void Player::open(int dir, const World* world) {
+	for (int n = 0; n < 4; n++){
+		if (dir == n) {
+			for (int i = 0; i < world->exits.num_elements; i++) {
+				if (world->exits[i]->origin == this->position && world->exits[i]->direction == n) {
+					if (world->exits[i]->open == false) {
+						world->exits[i]->open = true;
+						world->exits[i + 1]->open = true;
+						printf("The door is now open\n");
+					}
+					else printf("The door is open\n");
+				}
+			}
+		}
+	}
+}
+
+//Close Function
+void Player::close( int dir,const World* world) {
+	for (int n = 0; n < 4; n++){
+		if (dir == n) {
+			for (int i = 0; i < world->exits.num_elements; i++) {
+				if (world->exits[i]->origin == this->position && world->exits[i]->direction == n) {
+					if (world->exits[i]->open == true) {
+						world->exits[i]->open = false;
+						world->exits[i + 1]->open = false;
+						printf("The door is now closed\n");
+					}
+					else printf("The door is closed\n");
+				}
+			}
+		}
+	}
+}
+
+
+
