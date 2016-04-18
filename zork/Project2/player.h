@@ -12,10 +12,10 @@ public:
 	Player(const char* name, const char* description);
 	Player(const char* name, const char* description,  Room* room);
 	~Player(){};
-	void go(int, const World*);
+	bool go(int, const World*);
 	void look(int, const World*)const;
-	void open(int, const World*);
-	void close(int, const World*);
+	bool open(int, const World*);
+	bool close(int, const World*);
 	World* world;
 };
 #endif

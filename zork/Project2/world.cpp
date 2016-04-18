@@ -19,46 +19,26 @@ void World::createworld(){
 
 	player =new Player("asd", "qwrwq", rooms[0]);
 
-	exits.push_back(new Exit("Hall", "You can see the hall"));
-	exits.push_back(new Exit("Jail", "You can see the jail"));
-	exits.push_back(new Exit("Entry", "You can see the entry"));
-	exits.push_back(new Exit("Hall", "You can see the hall"));
-	exits.push_back(new Exit("Eastcorridor", "You can see the east corridor"));
-	exits.push_back(new Exit("Hall", "You can see the hall"));
-	exits.push_back(new Exit("West corridor" ,"You can see the west corridor"));
-	exits.push_back(new Exit("Hall", "You can see the hall"));
-	exits.push_back(new Exit("Warehoue" , "You can see the warehouse"));
-	exits.push_back(new Exit("East corridor", "You can see the east crridor"));
-	exits.push_back(new Exit("Bath" , "You can see the bath"));
-	exits.push_back(new Exit("East corridor" , "You can see the east corridor"));
-	exits.push_back(new Exit("Gym" , "You can see the gym"));
-	exits.push_back(new Exit("West corridor" ,"You can see the west corridor"));
-	exits.push_back(new Exit("Courtyard" , "You can see the courtyard"));
-	exits.push_back(new Exit("West corridor" , "You can see the west corridor"));
-	exits.push_back(new Exit("Dinner room" , "You can see the dinner room"));
-	exits.push_back(new Exit("West Corridor" , "You can see the west corridor"));
+	exits.push_back(new Exit("Hall", "You can see the hall", rooms[0], rooms[1], false, south));//0
+	exits.push_back(new Exit("Jail", "You can see the jail", rooms[1], rooms[0], false, north));//1
+	exits.push_back(new Exit("Entry", "You can see the entry", rooms[1], rooms[2],true,south));//2
+	exits.push_back(new Exit("Hall", "You can see the hall", rooms[2], rooms[1], true,north));//3
+	exits.push_back(new Exit("Eastcorridor", "You can see the east corridor", rooms[1], rooms[3], true, east));//4
+	exits.push_back(new Exit("Hall", "You can see the hall", rooms[3], rooms[1], true, west));//5
+	exits.push_back(new Exit("West corridor", "You can see the west corridor", rooms[4], rooms[1], true, east));//6
+	exits.push_back(new Exit("Hall", "You can see the hall", rooms[1], rooms[4], true,west));//7
+	exits.push_back(new Exit("Warehoue", "You can see the warehouse", rooms[3], rooms[5], true,south));//8
+	exits.push_back(new Exit("East corridor", "You can see the east crridor", rooms[5], rooms[3], true, north));//9
+	exits.push_back(new Exit("Bath", "You can see the bath", rooms[3], rooms[6], true,east));//10
+	exits.push_back(new Exit("East corridor", "You can see the east corridor", rooms[6], rooms[3], true,west));//11
+	exits.push_back(new Exit("Gym", "You can see the gym", rooms[4], rooms[7], true, north));//12
+	exits.push_back(new Exit("West corridor", "You can see the west corridor", rooms[7], rooms[4], true,south));//13
+	exits.push_back(new Exit("Courtyard", "You can see the courtyard", rooms[4], rooms[8], true,south));//14
+	exits.push_back(new Exit("West corridor", "You can see the west corridor", rooms[8], rooms[4], true, north));//15
+	exits.push_back(new Exit("Dinner room", "You can see the dinner room", rooms[4], rooms[9], true,west));//16
+	exits.push_back(new Exit("West Corridor", "You can see the west corridor", rooms[9], rooms[4], true,east));//17
+	
 	/*
-	strcpy_s(exits[0].name, "Hall"); strcpy_s(exits[0].description, "You can see the Hall.");
-	strcpy_s(exits[1].name, "Jail"); strcpy_s(exits[1].description, "You can see your jail");
-	strcpy_s(exits[2].name, "Entry"); strcpy_s(exits[2].description, "You can see the Entry");
-	strcpy_s(exits[3].name, "Hall"); strcpy_s(exits[3].description, "You can see the Hall");
-	strcpy_s(exits[4].name, "East Corridor"); strcpy_s(exits[4].description, "You can see the East Corridor");
-	strcpy_s(exits[5].name, "Hall"); strcpy_s(exits[5].description, "You can see the Hall");
-	strcpy_s(exits[6].name, "West Corridor"); strcpy_s(exits[6].description, "You can see the West Corridor");
-	strcpy_s(exits[7].name, "Hall"); strcpy_s(exits[7].description, "You can see the Hall");
-	strcpy_s(exits[8].name, "Warehouse"); strcpy_s(exits[8].description, "You can see the Warehouse");
-	strcpy_s(exits[9].name, "East Corridor"); strcpy_s(exits[9].description, "You can see the East Corridor");
-	strcpy_s(exits[10].name, "Bath"); strcpy_s(exits[10].description, "You can see the Bath");
-	strcpy_s(exits[11].name, "East Corridor"); strcpy_s(exits[11].description, "You can see the East corridor");
-	strcpy_s(exits[12].name, "Gym"); strcpy_s(exits[12].description, "You can see the Gym");
-	strcpy_s(exits[13].name, "West Corridor"); strcpy_s(exits[13].description, "You can see the West Corridor");
-	strcpy_s(exits[14].name, "Courtyard"); strcpy_s(exits[14].description, "You can see the Courtyard");
-	strcpy_s(exits[15].name, "West Corridor"); strcpy_s(exits[15].description, "You can see the West Corridor");
-	strcpy_s(exits[16].name, "Dinner Room"); strcpy_s(exits[16].description, "You can see the Dinner Room");
-	strcpy_s(exits[17].name, "West Corridor"); strcpy_s(exits[17].description, "You can see the West Corridor");*/
-
-
-
 	exits[0]->origin = rooms[0]; exits[0]->destination = rooms[1]; exits[0]->open = false; exits[0]->direction = south;
 	exits[1]->origin = rooms[1]; exits[1]->destination = rooms[0]; exits[1]->open = false; exits[1]->direction = north;
 	exits[2]->origin = rooms[1]; exits[2]->destination = rooms[2]; exits[2]->open = false; exits[2]->direction = south;
@@ -76,5 +56,5 @@ void World::createworld(){
 	exits[14]->origin = rooms[4]; exits[14]->destination = rooms[8]; exits[14]->open = true; exits[14]->direction = south;
 	exits[15]->origin = rooms[8]; exits[15]->destination = rooms[4]; exits[15]->open = true; exits[15]->direction = north;
 	exits[17]->origin = rooms[9]; exits[16]->destination = rooms[4]; exits[16]->open = true; exits[17]->direction = east;
-	exits[16]->origin = rooms[4]; exits[17]->destination = rooms[9]; exits[17]->open = true; exits[16]->direction = west;
+	exits[16]->origin = rooms[4]; exits[17]->destination = rooms[9]; exits[17]->open = true; exits[16]->direction = west;*/
 }
