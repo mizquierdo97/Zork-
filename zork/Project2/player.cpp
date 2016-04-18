@@ -159,5 +159,12 @@ bool Player::close( int dir,const World* world) {
 	}
 }
 
-
-
+void Player::look_item(const char* name,const World* world)const{
+	for (int i = 0; i < world->objects.num_elements; i++){
+		char* name2;
+		name2 = world->objects[i]->get_name();
+		if (name == name2){
+			printf("%s", world->objects[i]->get_description());
+		}
+	}
+}

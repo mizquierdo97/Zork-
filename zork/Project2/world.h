@@ -5,6 +5,7 @@
 #include "entity.h"
 #include "vector.h"
 #include "exit.h"
+#include "object.h"
 
 class Exit;
 class Room;
@@ -21,9 +22,8 @@ class World{
 public:
 	Vector <Room*> rooms;
 	Player* player;
-	//Vector <Player*> player;
 	Vector <Exit*> exits;
-	//Vector <Object*> objects;
+	Vector <Object*> objects;
 
 	World(){};
 	~World(){};

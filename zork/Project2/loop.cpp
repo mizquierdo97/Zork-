@@ -12,17 +12,7 @@ bool World::loop(){
 	
 	printf("%s\n%s\n", player->position->get_name(), player->position->get_description());
 	gets_s(command);
-	/*String* s_command = new String(command);
-	int length = s_command->length();
-	//char* word;
-	printf("%s", s_command->tokenize(' ', command));
-	char* word;
-	word = s_command->tokenize(' ', command);
-		
-	
-	*/
-	//s_command->~String();
-	//return false;
+
 	int dir = -1;
 	int n = 0;
 	for (int i = 0; command[i]; i++)
@@ -148,8 +138,12 @@ bool World::loop(){
 	else if (strcmp(pch1[1], "me") == 0 || strcmp(pch1[1], "m") == 0 || strcmp(pch1[1], "yourself") == 0 || strcmp(pch1[1], "y") == 0){
 	dir = 4;
 	}
+	else{
+		player->look_item(pch1[1], this);
+	}
 	player->look(dir, this);
 	}
+	
 	break;
 
 	}

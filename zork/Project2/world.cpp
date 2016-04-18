@@ -37,6 +37,8 @@ void World::createworld(){
 	exits.push_back(new Exit("West corridor", "You can see the west corridor", rooms[8], rooms[4], true, north));//15
 	exits.push_back(new Exit("Dinner room", "You can see the dinner room", rooms[4], rooms[9], true,west));//16
 	exits.push_back(new Exit("West Corridor", "You can see the west corridor", rooms[9], rooms[4], true,east));//17
+
+	objects.push_back(new Object("test", "Descriptiontest", rooms[0]));
 	
 	/*
 	exits[0]->origin = rooms[0]; exits[0]->destination = rooms[1]; exits[0]->open = false; exits[0]->direction = south;

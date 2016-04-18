@@ -70,6 +70,7 @@
     <ClCompile Include="exit.cpp" />
     <ClCompile Include="loop.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="room.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -79,6 +80,7 @@
   <ItemGroup>
     <ClInclude Include="entity.h" />
     <ClInclude Include="exit.h" />
+    <ClInclude Include="object.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="room.h" />
     <ClInclude Include="string.h" />
