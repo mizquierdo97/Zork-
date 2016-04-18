@@ -6,8 +6,9 @@
 class Object :public Entity{
 public:
 	Object();
-	~Object();
+
 	Object(const char* name, const char* description, Room* position);
+	Object(const char* name, const char* description);
 	Room* position;
 };
 

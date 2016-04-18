@@ -80,6 +80,7 @@
   <ItemGroup>
     <ClInclude Include="entity.h" />
     <ClInclude Include="exit.h" />
+    <ClInclude Include="MemoryLeaks.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="room.h" />

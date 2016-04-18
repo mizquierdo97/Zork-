@@ -12,19 +12,19 @@ public:
 	Room* position;
 	Player(const char* name, const char* description);
 	Player(const char* name, const char* description,  Room* room);
-	~Player(){};
+	
 	bool go(int, const World*);
 	void look(int, const World*)const;
 	bool open(int, const World*);
 	bool close(int, const World*);
-	bool pick();
-	bool drop();
-	void inventory();
+	bool pick(const String&, const World*);
+	bool drop(const String&, const World*);
+	void look_inventory(const World*)const;
 	bool equip();
 	bool unequip();
 	bool put();
 	bool get();
-	void look_item(const char*, const World*)const;
+	void look_item(const String&, const World*)const;
 	World* world;
 	Vector <Object*> Inventory;
 };

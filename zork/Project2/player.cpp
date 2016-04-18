@@ -17,11 +17,9 @@ bool Player::go( int dir, const World* world ){
 	int door = NULL;
 
 	for (int n = 0; n < 4; n++){
-		if (dir == n){
-			
-			
+		if (dir == n){			
 			for (int i = 0; i < world->exits.num_elements; i++){
-				if (world->exits[i]->origin == this->position && world->exits[i]->direction == n){
+				if (world->exits[i]->origin == this->position && world->exits[i]->direction == dir){
 					if (world->exits[i]->open == false) {
 						printf("The door is closed\n");
 						door++;
@@ -159,12 +157,47 @@ bool Player::close( int dir,const World* world) {
 	}
 }
 
-void Player::look_item(const char* name,const World* world)const{
+void Player::look_item(const String& name,const World* world)const{
 	for (int i = 0; i < world->objects.num_elements; i++){
-		char* name2;
+		if (world->objects[i]->position == this->position){
+		String name2;
 		name2 = world->objects[i]->get_name();
 		if (name == name2){
-			printf("%s", world->objects[i]->get_description());
+			printf("%s\n", world->objects[i]->get_description());
+		}
 		}
 	}
+}
+
+bool Player::pick(const String& name, const World* world){
+	for (int i = 0; i < world->objects.num_elements; i++){
+		if (world->objects[i]->position == this->position){
+			String name2;
+			name2 = world->objects[i]->get_name();
+			if (name == name2){
+				Inventory.push_back(new Object(world->objects[i]->get_name(), world->objects[i]->get_description()));
+				world->objects[i]->position = nullptr;
+				return true;
+			}
+		}
+	}
+}
+
+bool Player::drop(const String& name, const World* world){
+	for (int i = 0; i < world->objects.num_elements; i++){
+		String name2;
+		name2 = world->objects[i]->get_name();
+		if (name == name2){
+			Inventory.remove(i);
+			return true;
+		}
+	}
+}
+
+void Player::look_inventory(const World* world)const{
+
+	for (int i = 0; i < world->objects.num_elements; i++){
+		printf("%s\t%s\n", world->player->Inventory[i]->get_name(), world->player->Inventory[i]->get_description());
+	}
+
 }

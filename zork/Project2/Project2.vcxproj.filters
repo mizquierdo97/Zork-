@@ -71,5 +71,8 @@
     <ClInclude Include="object.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="MemoryLeaks.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

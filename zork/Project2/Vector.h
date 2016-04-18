@@ -4,6 +4,7 @@
 #include <assert.h>
 
 
+
 typedef unsigned int uint;
 
 template <class TYPE>
@@ -79,6 +80,13 @@ public:
 	TYPE& operator[](uint index){
 		if(index > num_elements)assert(index < num_elements);
 		return buffer[index];
+	}
+	void remove(int i){
+		for (int n = 0; n < num_elements; n++){
+			buffer[i] = buffer[i + 1];
+			num_elements--;
+
+		}
 	}
 
 };

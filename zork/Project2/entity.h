@@ -19,15 +19,19 @@ enum type{
 };
 
 class Entity{
+private:
+	type Type = ENTITY;
 public:
 	String name;
 	String description;
-	type Type;
+	
 	Vector <Entity*> entities;
 
 	Entity(){};
 	Entity(const char* name, const char* description, type TYPE);//////////////
+	virtual ~Entity(){ };
 	char* get_name()const;
 	char* get_description()const;
+	Vector <Entity*> Inventory;
 };
 #endif

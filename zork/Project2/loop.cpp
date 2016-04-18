@@ -66,8 +66,12 @@ bool World::loop(){
 		else if (strcmp(pch1[0], "look") == 0 || strcmp(pch1[0], "l") == 0) {
 			printf("You are in %s. %s\n", player[0].position->name, player[0].position->description);
 		}
+		else if (strcmp(pch1[0], "inventory") == 0 || strcmp(pch1[0], "inv") == 0 || strcmp(pch1[0], "i") == 0) {
+			player->look_inventory(this);
+		}
 		else printf("Invalid command\n");
 		break;
+
 
 		
 
@@ -143,6 +147,15 @@ bool World::loop(){
 	}
 	player->look(dir, this);
 	}
+
+	else if (strcmp(pch1[0], "pick") == 0 || strcmp(pch1[0], "p") == 0) {
+		player->pick(pch1[1], this);
+	}
+
+	else if (strcmp(pch1[0], "drop") == 0 || strcmp(pch1[0], "drop") == 0) {
+		player->drop(pch1[1], this);
+	}
+
 	
 	break;
 

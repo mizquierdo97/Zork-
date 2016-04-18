@@ -1,6 +1,8 @@
 #include "world.h"
+#include "MemoryLeaks.h"
 
 int main(){
+	ReportMemoryLeaks();
 	bool quit = false;
 	World my_world;
 	my_world.createworld();

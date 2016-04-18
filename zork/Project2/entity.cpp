@@ -10,4 +10,5 @@ char* Entity::get_description()const{
 char* Entity::get_name()const{
 	return name.c_str();
 }
+
 //

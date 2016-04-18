@@ -6,7 +6,7 @@ class Exit :public Entity{
 public:
 	Exit();
 	Exit(const char* name, const char* description, Room* origin, Room* destination, bool open, int direction);
-	~Exit();
+
 	Room* origin;
 	Room* destination;
 	bool open;
