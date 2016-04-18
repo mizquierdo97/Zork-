@@ -2,8 +2,13 @@
 #include <string>
 #include "Vector.h"
 
+String::String()
+{
 
-String::String(const char* str){
+}
+
+String::String(const char* str)
+{
 	mcapacity = strlen(str) + 1;
 	buffer = new char[mcapacity];
 	strcpy(buffer, str);
@@ -35,6 +40,9 @@ bool String::empty()const{
 bool String::operator == (const String& str)const{
 	return(strcmp(buffer, str.buffer) == 0);
 
+}
+bool String::operator == (const char* str) const{
+	return(strcmp(buffer, str) == 0);
 }
 
 void String::operator += (const String& str){
@@ -98,22 +106,20 @@ void String::shrink_to_fit(){
 bool String::operator != (const String& str)const{
 	return(strcmp(buffer, str.buffer) != 0);
 }
-/*
-Vector<String*> String::tokenize(const char element, const String& string){
-	char* pch;
-	char* pch1[4];
-	char* pch2 = 0;
-	pch = strtok(string, " ,.-");
-	pch1[0] = pch;
-	int num = 1;
-	while (pch != NULL)
-	{
 
-		pch = strtok(NULL, " ,.-");
-		pch1[num] = pch;
-		n++;
-		num++;
+Vector<String*> String::tokenize()
+{
+	Vector<String*> tokens;
+	char *context = nullptr;
+	tokens.push_back(new String(strtok_s(this->buffer, " ", &context)));
+	while (strcmp(context, "") != 0){
+		tokens.push_back(new String(strtok_s(NULL, " ", &context)));
 	}
+	return tokens;
 }
-*/
+String String::s_str()const
+{
+	String copy(buffer);
+	return copy;
+}
 

@@ -22,10 +22,11 @@ public:
 	void look_inventory(const World*)const;
 	bool equip();
 	bool unequip();
-	bool put();
-	bool get();
+	bool put(const String&, const String&, const World*);
+	bool take(const String& , const String& , const World* );
 	void look_item(const String&, const World*)const;
+	void look_into(const String&, const World*)const;
 	World* world;
-	Vector <Object*> Inventory;
+	//Vector <Object*> Inventory;
 };
 #endif

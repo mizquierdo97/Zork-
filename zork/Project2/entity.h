@@ -28,7 +28,7 @@ public:
 	Vector <Entity*> entities;
 
 	Entity(){};
-	Entity(const char* name, const char* description, type TYPE);//////////////
+	Entity(const char* name, const char* description, type TYPE);
 	virtual ~Entity(){ };
 	char* get_name()const;
 	char* get_description()const;

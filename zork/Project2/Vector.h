@@ -22,7 +22,7 @@ public:
 
 	}
 
-	Vector(const Vector& other_array){
+	Vector <TYPE>(const Vector<TYPE>& other_array){
 		capacity = other_array.capacity;
 		num_elements = other_array.num_elements;
 		buffer = new TYPE[capacity];
@@ -31,10 +31,10 @@ public:
 		}
 	}
 
-	~Vector(){
+	/*~Vector(){
 		delete[] buffer;
 
-	}
+	}*/
 	void push_back(const TYPE& element){
 
 		TYPE* temp = nullptr;
@@ -88,6 +88,7 @@ public:
 
 		}
 	}
+	
 
 };
 

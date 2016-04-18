@@ -10,12 +10,14 @@ private:
 	char* buffer;
 	uint mcapacity;
 public:
-	String(){};
+	
+	String();
 	String(const char* str);
 	String(const String& str);
 	~String();
 	uint length()const;
 	char* c_str()const;
+	String s_str()const;
 	bool empty()const;
 	bool operator == (const String& str) const;
 	bool operator == (const char* str) const;
@@ -27,7 +29,7 @@ public:
 	uint capacity() const;
 	//Vector <String*> tokenize(const char character, const String& str);
 	bool operator !=(const String& str)const;
-
+	Vector<String*> tokenize();
 };
 
 #endif
