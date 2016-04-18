@@ -4,6 +4,8 @@
 #include "string.h"
 #include <string.h>
 #include <string>
+
+// loob while the game is on, game stops with return true
 bool World::loop(){
 
 	char command[50];
@@ -15,23 +17,11 @@ bool World::loop(){
 
 	int dir = -1;
 	int n = 0;
+
+	//ignore caps
 	for (int i = 0; command[i]; i++)
 		command[i] = tolower(command[i]);
-	/*
-	String pch;
-	String pch1[5];
-	//String pch2[1] = { "south" };
-	pch = strtok(command, " ,.-");
-	pch1[0] = pch;
-	int num = 1;
-	while (pch != NULL)
-	{
 
-	pch = strtok(NULL, " ,.-");
-	pch1[num] = pch;
-	n++;
-	num++;
-	}*/
 	String s_command(command);
 	Vector<String*> v_command;
 	v_command = s_command.tokenize();
@@ -60,6 +50,8 @@ bool World::loop(){
 
 		//Quit
 		else if (v_command[0]->s_str() == "quit" || v_command[0]->s_str() == "q"){
+
+			//free memory
 			for (int i = 0; i < this->rooms.num_elements; i++){
 				delete rooms[i];
 			}
@@ -71,6 +63,7 @@ bool World::loop(){
 			}
 			delete player;
 
+			//loop stops
 			return true;
 		}
 		//Help
@@ -163,29 +156,34 @@ bool World::loop(){
 			else if (v_command[1]->s_str() == "me" || v_command[1]->s_str() == "m" || v_command[1]->s_str() == "yourself" || v_command[1]->s_str() == "y"){
 				dir = 4;
 			}
-	else{
-	player->look_item(v_command[1]->s_str(), this);
-	}
-	player->look(dir, this);
-	}
-		
+		else{
+		player->look_item(v_command[1]->s_str(), this);
+		}
+		player->look(dir, this);
+		}
+		// Pick --
 		else if (v_command[0]->s_str() == "pick" || v_command[0]->s_str() == "p") {
 			player->pick(v_command[1]->s_str(), this);
 	}
-
+		//Drop --
 		else if (v_command[0]->s_str() == "drop" || v_command[0]->s_str() == "drop") {
 			player->drop(v_command[1]->s_str(), this);
 	}
 
 
 	break;
-	case 3: 	if (v_command[0]->s_str() == "look" || v_command[0]->s_str() == "l"){
+	
+	case 3: 
+		//look inventory of the objects
+		if (v_command[0]->s_str() == "look" || v_command[0]->s_str() == "l"){
 			player->look_into(v_command[2]->s_str(), this);
 	}break;
 	case 4:
+		//put <object> into <object>
 		if (v_command[0]->s_str() == "put"){
 			player->put(v_command[1]->s_str(), v_command[3]->s_str(), this);
 	}
+		//take <object> from <object>
 		else if (v_command[0]->s_str() == "take"){
 			player->take(v_command[1]->s_str(), v_command[3]->s_str(), this);
 	}
@@ -193,8 +191,9 @@ bool World::loop(){
 	
 
 	}
+			//loop continues
 			return false;
-		}
+}
 	
 
 	

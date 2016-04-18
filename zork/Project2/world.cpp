@@ -6,6 +6,8 @@
 
 
 void World::createworld(){
+
+	//Create Rooms
 	rooms.push_back(new Room("Jail", "A small and cold jail. It only have one closed door at south. In the room there's your personal chest"));//0
 	rooms.push_back(new Room("Hall", "A room which comunicates wit the other jails. There are two guards and many prisoners"));//1
 	rooms.push_back(new Room("Entry", "The entry to the prison. It could be the only way to scape"));//2
@@ -17,8 +19,10 @@ void World::createworld(){
 	rooms.push_back(new Room("Courtyard", "The only instance where the prisoners can see the sunlight. There's a shovel behind a tree"));//8
 	rooms.push_back(new Room("Dinner Room", "Totally empty apart from by a prisoner and a guard.There are some cutlery on the tables"));//9
 
+	//create player at room 0
 	player =new Player("Prisoner", "You are a prisoner", rooms[0]);
 
+	//create exits and their logic
 	exits.push_back(new Exit("Hall", "You can see the hall", rooms[0], rooms[1], false, south));//0
 	exits.push_back(new Exit("Jail", "You can see the jail", rooms[1], rooms[0], false, north));//1
 	exits.push_back(new Exit("Entry", "You can see the entry", rooms[1], rooms[2],true,south));//2
@@ -39,6 +43,7 @@ void World::createworld(){
 	exits.push_back(new Exit("West Corridor", "You can see the west corridor", rooms[9], rooms[4], true,east));//17
 
 	
+	//create objects and their logic
 	objects.push_back(new Object("chest", "There are things inside", rooms[0], false , true));
 	objects.push_back(new Object("broomstick", "A broomstick", rooms[5], true, false));
 	objects.push_back(new Object("box", "There are prisoner clothes inside", rooms[5], false, true));
@@ -46,6 +51,7 @@ void World::createworld(){
 	objects.push_back(new Object("shovel", "A shovel", rooms[8], true, false));
 	objects.push_back(new Object("knife", "A knife", rooms[9], true, false));
 
+	//put clothes into inventory of the box
 	objects[2]->Inventory.push_back(new Object("clothes", "The only clothes that prisoners can dress"));
 
 	

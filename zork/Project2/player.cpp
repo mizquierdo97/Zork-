@@ -12,7 +12,7 @@ Player::Player(const char* name, const char* description,Room* position) : Entit
 
 }
 
-
+//Go method
 bool Player::go( int dir, const World* world ){
 	int door = NULL;
 
@@ -39,6 +39,7 @@ bool Player::go( int dir, const World* world ){
 	
 }
 
+//Look Method
 void Player::look(int dir,const World* world)const{
 	int look = 0;
 	for (int n = 0; n < 4; n++){
@@ -61,7 +62,7 @@ void Player::look(int dir,const World* world)const{
 	}
 }
 
-//Open Function
+//Open Method
 bool Player::open(int dir, const World* world) {
 	bool door = false;
 	for (int n = 0; n < 4; n++){
@@ -108,7 +109,7 @@ bool Player::open(int dir, const World* world) {
 	}
 }
 
-//Close Function
+//Close Method
 bool Player::close( int dir,const World* world) {
 	bool door = false;
 	for (int n = 0; n < 4; n++){
@@ -156,7 +157,7 @@ bool Player::close( int dir,const World* world) {
 		}
 	}
 }
-
+//Look item method
 void Player::look_item(const String& name,const World* world)const{
 	for (int i = 0; i < world->objects.num_elements; i++){
 		if (world->objects[i]->position == this->position){
@@ -168,7 +169,7 @@ void Player::look_item(const String& name,const World* world)const{
 		}
 	}
 }
-
+//pick method
 bool Player::pick(const String& name, const World* world){
 	for (int i = 0; i < world->objects.num_elements; i++){
 		if (world->objects[i]->take == false){
@@ -189,6 +190,7 @@ bool Player::pick(const String& name, const World* world){
 	}
 }
 
+//drop method
 bool Player::drop(const String& name, const World* world){
 	for (int i = 0; i < world->objects.num_elements; i++){
 		String name2;
@@ -203,6 +205,7 @@ bool Player::drop(const String& name, const World* world){
 	}
 }
 
+//inventory method
 void Player::look_inventory(const World* world)const{
 	if (this->Inventory.num_elements== 0){
 		printf("\nYou have nothing in your inventory\n");
@@ -214,7 +217,7 @@ void Player::look_inventory(const World* world)const{
 	}
 
 }
-
+ //put method
 bool Player::put(const String& name, const String& name2, const World* world){
 	String o_name;//object name
 	String c_name;//chest name
@@ -248,6 +251,7 @@ bool Player::put(const String& name, const String& name2, const World* world){
 	}
 }
 
+//take method
 bool Player::take(const String& name, const String& name2, const World* world){
 	String o_name;//object name
 	String c_name;//chest name
@@ -270,6 +274,7 @@ bool Player::take(const String& name, const String& name2, const World* world){
 	}
 }
 
+//look into method
 void Player::look_into(const String& name, const World* world)const{
 	for (int i = 0; i < world->objects.num_elements; i++){
 		if (world->objects[i]->position == this->position){
